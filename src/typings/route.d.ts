@@ -62,6 +62,8 @@ declare namespace AuthRoute {
     multi?: boolean;
     /** 是否固定在tab卡不可关闭  */
     affix?: boolean;
+    /** layout-general模式下，是否显示侧边栏  */
+    isSiderVisible?: boolean;
   }
 
   type Route<K extends AllRouteKey = AllRouteKey> = K extends AllRouteKey

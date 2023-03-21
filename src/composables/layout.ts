@@ -38,12 +38,24 @@ export function useBasicLayout() {
       showLogo: true,
       showHeaderMenu: false,
       showMenuCollapse: true
+    },
+    'layout-general': {
+      showLogo: true,
+      showHeaderMenu: true,
+      showMenuCollapse: true
     }
   };
 
   const headerProps = computed(() => layoutHeaderProps[theme.layout.mode]);
 
-  const siderVisible = computed(() => theme.layout.mode !== 'horizontal');
+  const siderVisible = computed(() => {
+    let visible = theme.layout.mode !== 'horizontal';
+    if (theme.layout.mode === 'layout-general' && app.siderVisible === false) {
+      visible = app.siderVisible;
+    }
+    return visible;
+  });
+
   const siderWidth = computed(() => {
     const { width, mixWidth, mixChildMenuWidth } = theme.sider;
     const isVerticalMix = theme.layout.mode === 'vertical-mix';

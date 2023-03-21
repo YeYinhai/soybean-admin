@@ -1,10 +1,11 @@
 <template>
   <dark-mode-container class="global-header flex-y-center h-full" :inverted="theme.header.inverted">
     <global-logo v-if="showLogo" :show-title="true" class="h-full" :style="{ width: theme.sider.width + 'px' }" />
-    <div v-if="!showHeaderMenu" class="flex-1-hidden flex-y-center h-full">
+    <div v-if="!showHeaderMenu && !isLayoutGeneral" class="flex-1-hidden flex-y-center h-full">
       <menu-collapse v-if="showMenuCollapse || isMobile" />
       <global-breadcrumb v-if="theme.header.crumb.visible && !isMobile" />
     </div>
+    <header-menu-general v-else-if="isLayoutGeneral" />
     <header-menu v-else />
     <div class="flex justify-end h-full">
       <global-search />
@@ -19,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
 import GlobalLogo from '../global-logo/index.vue';
@@ -32,7 +34,8 @@ import {
   SettingButton,
   SystemMessage,
   ThemeMode,
-  UserAvatar
+  UserAvatar,
+  HeaderMenuGeneral
 } from './components';
 
 defineOptions({ name: 'GlobalHeader' });
@@ -52,6 +55,8 @@ const theme = useThemeStore();
 const { isMobile } = useBasicLayout();
 
 const showButton = import.meta.env.PROD && import.meta.env.VITE_VERCEL !== 'Y';
+
+const isLayoutGeneral = computed(() => theme.layout.mode === 'layout-general');
 </script>
 
 <style scoped>

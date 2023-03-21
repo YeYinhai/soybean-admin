@@ -1,6 +1,11 @@
 <template>
   <dark-mode-container class="flex-col-stretch h-full" :inverted="theme.sider.inverted">
-    <global-logo v-if="!isHorizontalMix" :show-title="showTitle" :style="{ height: theme.header.height + 'px' }" />
+    <global-logo
+      v-if="!isHorizontalMix && !isLayoutGeneral"
+      :show-title="showTitle"
+      :style="{ height: theme.header.height + 'px' }"
+    />
+    <vertical-sider-title v-if="isLayoutGeneral" :show-title="showTitle" :style="{ height: '50px' }" />
     <vertical-menu />
   </dark-mode-container>
 </template>
@@ -9,7 +14,7 @@
 import { computed } from 'vue';
 import { useAppStore, useThemeStore } from '@/store';
 import { GlobalLogo } from '@/layouts/common';
-import { VerticalMenu } from './components';
+import { VerticalMenu, VerticalSiderTitle } from './components';
 
 defineOptions({ name: 'VerticalSider' });
 
@@ -18,6 +23,7 @@ const theme = useThemeStore();
 
 const isHorizontalMix = computed(() => theme.layout.mode === 'horizontal-mix');
 const showTitle = computed(() => !app.siderCollapse && theme.layout.mode !== 'vertical-mix');
+const isLayoutGeneral = computed(() => theme.layout.mode === 'layout-general');
 </script>
 
 <style scoped></style>

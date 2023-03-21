@@ -2,7 +2,8 @@ export const themeLayoutModeLabels: Record<UnionKey.ThemeLayoutMode, string> = {
   vertical: '左侧菜单模式',
   horizontal: '顶部菜单模式',
   'vertical-mix': '左侧菜单混合模式',
-  'horizontal-mix': '顶部菜单混合模式'
+  'horizontal-mix': '顶部菜单混合模式',
+  'layout-general': '通栏'
 };
 
 export const themeLayoutModeOptions: Common.OptionWithKey<UnionKey.ThemeLayoutMode>[] = [
@@ -21,6 +22,10 @@ export const themeLayoutModeOptions: Common.OptionWithKey<UnionKey.ThemeLayoutMo
   {
     value: 'horizontal-mix',
     label: themeLayoutModeLabels['horizontal-mix']
+  },
+  {
+    value: 'layout-general',
+    label: themeLayoutModeLabels['layout-general']
   }
 ];
 

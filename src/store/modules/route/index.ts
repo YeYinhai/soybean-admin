@@ -34,6 +34,8 @@ interface RouteState {
   searchMenus: AuthRoute.Route[];
   /** 缓存的路由名称 */
   cacheRoutes: string[];
+  /** 侧边菜单 */
+  siderMenus: App.GlobalMenuOption;
 }
 
 export const useRouteStore = defineStore('route-store', {
@@ -43,7 +45,15 @@ export const useRouteStore = defineStore('route-store', {
     routeHomeName: transformRoutePathToRouteName(import.meta.env.VITE_ROUTE_HOME_PATH),
     menus: [],
     searchMenus: [],
-    cacheRoutes: []
+    cacheRoutes: [],
+    siderMenus: {
+      key: '',
+      label: '',
+      routeName: '',
+      routePath: '',
+      icon: () => null,
+      children: []
+    } as App.GlobalMenuOption
   }),
   actions: {
     /** 重置路由的store */

@@ -17,6 +17,8 @@ interface AppState {
   siderCollapse: boolean;
   /** vertical-mix模式下 侧边栏的固定状态 */
   mixSiderFixed: boolean;
+  /** layout-general模式下 侧边栏的是显示隐藏 */
+  siderVisible: boolean;
 }
 
 export const useAppStore = defineStore('app-store', {
@@ -27,7 +29,8 @@ export const useAppStore = defineStore('app-store', {
     reloadFlag: true,
     settingDrawerVisible: false,
     siderCollapse: false,
-    mixSiderFixed: false
+    mixSiderFixed: false,
+    siderVisible: true
   }),
   actions: {
     /**
@@ -97,6 +100,10 @@ export const useAppStore = defineStore('app-store', {
     /** 设置主体内容全屏 */
     setContentFull(full: boolean) {
       this.contentFull = full;
+    },
+    /** 设置侧边栏显示状态 */
+    setSiderVisible(collapse: boolean) {
+      this.siderVisible = collapse;
     }
   }
 });

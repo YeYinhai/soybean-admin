@@ -1,6 +1,7 @@
 import type { Router } from 'vue-router';
 import { useTitle } from '@vueuse/core';
 import { createPermissionGuard } from './permission';
+import { siderCollapse } from './sider';
 
 /**
  * 路由守卫函数
@@ -12,6 +13,8 @@ export function createRouterGuard(router: Router) {
     window.$loadingBar?.start();
     // 页面跳转权限处理
     await createPermissionGuard(to, from, next);
+    // 页面调整判断左侧菜单折叠
+    await siderCollapse(to, from, next);
   });
   router.afterEach(to => {
     // 设置document title

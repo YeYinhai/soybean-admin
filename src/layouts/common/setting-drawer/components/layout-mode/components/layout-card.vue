@@ -68,6 +68,12 @@ const layoutConfig: LayoutConfig = {
     headerClass: '',
     menuClass: 'w-full h-1/4',
     mainClass: 'w-2/3 h-3/4'
+  },
+  'layout-general': {
+    placement: 'bottom-end',
+    headerClass: '',
+    menuClass: 'w-full h-1/4',
+    mainClass: 'w-2/3 h-3/4'
   }
 };
 

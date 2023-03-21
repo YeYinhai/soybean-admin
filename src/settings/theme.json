@@ -20,6 +20,10 @@
       {
         "value": "horizontal-mix",
         "label": "顶部菜单混合模式"
+      },
+      {
+        "value": "layout-general",
+        "label": "通栏"
       }
     ]
   },

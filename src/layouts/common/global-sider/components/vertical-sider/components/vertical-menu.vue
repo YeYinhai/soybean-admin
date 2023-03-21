@@ -31,7 +31,14 @@ const theme = useThemeStore();
 const routeStore = useRouteStore();
 const { routerPush } = useRouterPush();
 
-const menus = computed(() => routeStore.menus as App.GlobalMenuOption[]);
+const isLayoutGeneral = computed(() => theme.layout.mode === 'layout-general');
+
+const menus = computed(() => {
+  if (isLayoutGeneral.value) {
+    return routeStore.siderMenus.children as App.GlobalMenuOption[];
+  }
+  return routeStore.menus as App.GlobalMenuOption[];
+});
 
 const activeKey = computed(() => (route.meta?.activeMenu ? route.meta.activeMenu : route.name) as string);
 const expandedKeys = ref<string[]>([]);

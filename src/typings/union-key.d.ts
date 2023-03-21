@@ -25,8 +25,9 @@ declare namespace UnionKey {
    * - horizontal: 顶部菜单模式
    * - vertical-mix: 左侧菜单混合模式
    * - horizontal-mix: 顶部菜单混合模式
+   * - layout-general: 通栏
    */
-  type ThemeLayoutMode = 'vertical' | 'horizontal' | 'vertical-mix' | 'horizontal-mix';
+  type ThemeLayoutMode = 'vertical' | 'horizontal' | 'vertical-mix' | 'horizontal-mix' | 'layout-general';
 
   /**
    * 内容溢出时的出现滚动条的方式
