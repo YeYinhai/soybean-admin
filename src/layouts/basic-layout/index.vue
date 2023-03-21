@@ -16,9 +16,14 @@
     :footer-visible="theme.footer.visible"
     :fixed-footer="theme.footer.fixed"
     :right-footer="theme.footer.right"
+    :breadcrumb-visible="breadcrumbsVisible"
+    :breadcrumb-height="50"
   >
     <template #header>
       <global-header v-bind="headerProps" />
+    </template>
+    <template #breadcrumb>
+      <global-breadcrumb />
     </template>
     <template #tab>
       <global-tab />
@@ -36,17 +41,26 @@
 </template>
 
 <script setup lang="ts">
-import { AdminLayout } from '@soybeanjs/vue-materials';
+// import { AdminLayout } from '@soybeanjs/vue-materials';
 import { useAppStore, useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
-import { GlobalContent, GlobalFooter, GlobalHeader, GlobalSider, GlobalTab, SettingDrawer } from '../common';
+import {
+  GlobalContent,
+  GlobalFooter,
+  GlobalHeader,
+  GlobalSider,
+  GlobalTab,
+  SettingDrawer,
+  AdminLayout,
+  GlobalBreadcrumb
+} from '../common';
 
 defineOptions({ name: 'BasicLayout' });
 
 const app = useAppStore();
 const theme = useThemeStore();
 
-const { mode, headerProps, siderVisible, siderWidth, siderCollapsedWidth } = useBasicLayout();
+const { mode, headerProps, siderVisible, siderWidth, siderCollapsedWidth, breadcrumbsVisible } = useBasicLayout();
 </script>
 
 <style lang="scss">

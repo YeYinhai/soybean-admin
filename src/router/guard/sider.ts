@@ -11,7 +11,7 @@ export async function siderCollapse(
   next: NavigationGuardNext
 ) {
   const app = useAppStore();
-  if (to.meta.isSiderVisible === false) {
+  if (to.meta.siderVisible === false) {
     app.setSiderVisible(false);
   } else {
     app.setSiderVisible(true);

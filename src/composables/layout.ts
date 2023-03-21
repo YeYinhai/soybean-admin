@@ -74,13 +74,22 @@ export function useBasicLayout() {
     }
     return w;
   });
-
+  const breadcrumbsVisible = computed(() => {
+    let visible = false;
+    if (theme.header.crumb.visible === false) {
+      visible = false;
+    } else if (theme.layout.mode === 'horizontal' || theme.layout.mode === 'layout-general') {
+      visible = true;
+    }
+    return visible;
+  });
   return {
     mode,
     isMobile,
     headerProps,
     siderVisible,
     siderWidth,
-    siderCollapsedWidth
+    siderCollapsedWidth,
+    breadcrumbsVisible
   };
 }
