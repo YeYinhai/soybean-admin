@@ -16,7 +16,16 @@ import pwa from './pwa';
  * @param viteEnv - 环境变量配置
  */
 export function setupVitePlugins(viteEnv: ImportMetaEnv): (PluginOption | PluginOption[])[] {
-  const plugins = [vue(), vueJsx(), html(viteEnv), ...unplugin(viteEnv), unocss(), mock, progress(), pageRoute()];
+  const plugins = [
+    vue(),
+    vueJsx(),
+    html(viteEnv),
+    ...unplugin(viteEnv),
+    unocss({ hmrTopLevelAwait: false }),
+    mock,
+    progress(),
+    pageRoute()
+  ];
 
   if (viteEnv.VITE_VISUALIZER === 'Y') {
     plugins.push(visualizer as PluginOption);
