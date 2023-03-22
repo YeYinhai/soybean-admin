@@ -21,11 +21,10 @@ export async function siderCollapse(
   const routeStore = useRouteStore();
   const isLayoutGeneral = computed(() => theme.layout.mode === 'layout-general');
   if (isLayoutGeneral.value) {
-    routeStore.siderMenus = find(routeStore.menus, item => {
-      if (item.routePath === to.matched[0].path) {
-        return true;
-      }
-      return false;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    routeStore.siderMenus = find(routeStore?.menus, item => {
+      return item.routePath === to.matched[0].path;
     }) as App.GlobalMenuOption;
   }
 }

@@ -6,7 +6,7 @@ import GlobalContent from './global-content/index.vue';
 import GlobalFooter from './global-footer/index.vue';
 import GlobalLogo from './global-logo/index.vue';
 import GlobalBreadcrumb from './global-breadcrumb/index.vue';
-import { AdminLayout } from './global-materials/index.ts';
+import { AdminLayout } from './global-materials/index';
 
 export {
   SettingDrawer,
