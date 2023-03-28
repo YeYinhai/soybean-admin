@@ -57,7 +57,7 @@ async function getTableData() {
     setTimeout(() => {
       setTableData(data);
       endLoading();
-    }, 1000);
+    }, 100);
   }
 }
 
