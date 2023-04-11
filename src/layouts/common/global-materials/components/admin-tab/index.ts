@@ -1,5 +1,5 @@
-import AdminTab from './tab';
 import { install } from '../../shared';
+import AdminTab from './tab';
 
 AdminTab.install = install;
 

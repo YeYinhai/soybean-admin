@@ -1,5 +1,5 @@
-import AdminLayout, { SCROLL_EL_ID } from './layout';
 import { install } from '../../shared';
+import AdminLayout, { SCROLL_EL_ID } from './layout';
 
 AdminLayout.install = install;
 
