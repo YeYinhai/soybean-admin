@@ -51,6 +51,9 @@ export function transformAuthRouteToVueRoute(item: AuthRoute.Route) {
       },
       self() {
         itemRoute.component = getViewComponent(item.name as AuthRoute.LastDegreeRouteKey);
+      },
+      iframe() {
+        itemRoute.component = getLayoutComponent('iframe');
       }
     };
     try {

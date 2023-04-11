@@ -1,5 +1,5 @@
 import type { RouteComponent } from 'vue-router';
-import { BasicLayout, BlankLayout } from '@/layouts';
+import { BasicLayout, BlankLayout, IFrameLayout } from '@/layouts';
 import { views } from '@/views';
 import { isFunction } from '../common';
 
@@ -18,7 +18,8 @@ type LayoutComponent = Record<UnionKey.LayoutComponentType, Lazy<ModuleComponent
 export function getLayoutComponent(layoutType: UnionKey.LayoutComponentType) {
   const layoutComponent: LayoutComponent = {
     basic: BasicLayout,
-    blank: BlankLayout
+    blank: BlankLayout,
+    iframe: IFrameLayout
   };
   return layoutComponent[layoutType];
 }
