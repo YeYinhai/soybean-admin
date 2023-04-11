@@ -29,7 +29,7 @@ export default defineComponent({
   watch: {
     'theme.themeColor': {
       handler(val) {
-        console.log(val);
+        // console.log(val);
       }
     }
   },

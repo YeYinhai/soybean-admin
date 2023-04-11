@@ -127,6 +127,15 @@ module.exports = {
         ],
         pathGroupsExcludedImportTypes: ['vue', 'vue-router', 'pinia', 'naive-ui']
       }
+    ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        args: 'none',
+        vars: 'all',
+        ignoreRestSiblings: true
+      }
     ]
   }
 };
