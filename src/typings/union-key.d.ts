@@ -6,8 +6,9 @@ declare namespace UnionKey {
    * 布局组件的名称
    * - basic 基础布局
    * - blank 空白布局
+	 * - iframe 布局
    */
-  type LayoutComponentType = 'basic' | 'blank';
+  type LayoutComponentType = 'basic' | 'blank' | 'iframe';
 
   /**
    * 登录模块

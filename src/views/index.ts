@@ -11,6 +11,8 @@ export const views: Record<
   login: () => import('./_builtin/login/index.vue'),
   'not-found': () => import('./_builtin/not-found/index.vue'),
   about: () => import('./about/index.vue'),
+  about2_form: () => import('./about2/form/index.vue'),
+  about2: () => import('./about2/index.vue'),
   'auth-demo_permission': () => import('./auth-demo/permission/index.vue'),
   'auth-demo_super': () => import('./auth-demo/super/index.vue'),
   component_button: () => import('./component/button/index.vue'),

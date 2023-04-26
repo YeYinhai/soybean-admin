@@ -15,7 +15,8 @@ export async function createPermissionGuard(
   if (!permission) return;
 
   // 外链路由, 从新标签打开，返回上一个路由
-  if (to.meta.href) {
+  // singleLayout == 'iframe' 站内打开。
+  if (to.meta.href && to.meta.singleLayout !== 'iframe') {
     window.open(to.meta.href);
     next({ path: from.fullPath, replace: true, query: from.query });
     return;

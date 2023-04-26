@@ -2,7 +2,7 @@ import VueDefineOption from 'unplugin-vue-define-options/vite';
 import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Components from 'unplugin-vue-components/vite';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { NaiveUiResolver, ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import { getSrcPath } from '../utils';
@@ -33,7 +33,11 @@ export default function unplugin(viteEnv: ImportMetaEnv) {
       types: [{ from: 'vue-router', names: ['RouterLink', 'RouterView'] }],
       resolvers: [
         NaiveUiResolver(),
-        IconsResolver({ customCollections: [collectionName], componentPrefix: VITE_ICON_PREFFIX })
+        IconsResolver({ customCollections: [collectionName], componentPrefix: VITE_ICON_PREFFIX }),
+        ElementPlusResolver({
+          // 自动引入修改主题色添加这一行，使用预处理样式
+          importStyle: 'sass'
+        })
       ]
     }),
     createSvgIconsPlugin({

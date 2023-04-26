@@ -22,6 +22,16 @@ const dashboard: AuthRoute.Route = {
         requiresAuth: true,
         icon: 'icon-park-outline:workbench'
       }
+    },
+    {
+      name: 'about2',
+      path: '/about2',
+      component: 'self',
+      meta: {
+        title: '工作台',
+        requiresAuth: true,
+        icon: 'icon-park-outline:workbench'
+      }
     }
   ],
   meta: {

@@ -1,4 +1,7 @@
 import { createApp } from 'vue';
+import naive from 'naive-ui';
+import formCreate from '@form-create/naive-ui';
+import ElementPlus from 'element-plus';
 import App from './App.vue';
 import AppLoading from './components/common/app-loading.vue';
 import { setupDirectives } from './directives';
@@ -18,6 +21,9 @@ async function setupApp() {
 
   const app = createApp(App);
 
+  app.use(naive);
+  app.use(formCreate);
+  app.use(ElementPlus);
   // store plugin: pinia
   setupStore(app);
 
