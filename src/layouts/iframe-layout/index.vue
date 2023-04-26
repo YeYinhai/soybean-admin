@@ -45,7 +45,7 @@
 <script setup lang="ts">
 // import { AdminLayout } from '@soybeanjs/vue-materials';
 import { ref } from 'vue';
-// import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useAppStore, useThemeStore } from '@/store';
 import { useBasicLayout } from '@/composables';
 import {
@@ -64,9 +64,9 @@ const app = useAppStore();
 const theme = useThemeStore();
 
 const { mode, headerProps, siderVisible, siderWidth, siderCollapsedWidth } = useBasicLayout();
-// const route = useRoute();
-// debugger;
-const src = ref('');
+
+const route = useRoute();
+const src = ref(route.meta.href);
 </script>
 
 <style lang="scss">
