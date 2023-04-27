@@ -136,6 +136,7 @@ module.exports = {
         vars: 'all',
         ignoreRestSiblings: true
       }
-    ]
+    ],
+    'func-names': 'off'
   }
 };

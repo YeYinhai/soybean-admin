@@ -32,6 +32,16 @@ const component: AuthRoute.Route = {
         requiresAuth: true,
         icon: 'mdi:table-large'
       }
+    },
+    {
+      name: 'component_fast-crud',
+      path: '/component/fast-crud',
+      component: 'self',
+      meta: {
+        title: 'fast-crud',
+        requiresAuth: true,
+        icon: 'mdi:table-large'
+      }
     }
   ],
   meta: {
