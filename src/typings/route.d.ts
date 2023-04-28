@@ -64,6 +64,9 @@ declare namespace AuthRoute {
     affix?: boolean;
     /** layout-general模式下，是否显示侧边栏  */
     siderVisible?: boolean;
+    /** 缓存iframe页面 */
+    iframeKeepAlive?: boolean;
+
   }
 
   type Route<K extends AllRouteKey = AllRouteKey> = K extends AllRouteKey

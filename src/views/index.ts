@@ -21,6 +21,7 @@ export const views: Record<
   component_table: () => import('./component/table/index.vue'),
   dashboard_analysis: () => import('./dashboard/analysis/index.vue'),
   dashboard_workbench: () => import('./dashboard/workbench/index.vue'),
+  dataease_dataset: () => import('./dataease/dataset/index.vue'),
   document_naive: () => import('./document/naive/index.vue'),
   'document_project-link': () => import('./document/project-link/index.vue'),
   document_project: () => import('./document/project/index.vue'),
