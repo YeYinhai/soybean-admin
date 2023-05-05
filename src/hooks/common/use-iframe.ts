@@ -27,7 +27,10 @@ export default function useIframe(props: Props) {
       if (newValue === false) {
         _this.parent.parent.proxy!.$el.style.display = 'none';
       } else if (newValue === true) {
-        _this.parent.parent.proxy!.$el.style.display = '';
+        setTimeout(() => {
+          // @ts-ignore 非空判断，上面已经过滤掉了。
+          _this.parent.parent.proxy!.$el.style.display = '';
+        }, 410);
       }
     }
   });
