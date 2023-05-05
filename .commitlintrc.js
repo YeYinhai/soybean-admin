@@ -22,6 +22,7 @@ module.exports = {
       'minus',
       'del',
       'build',
+			'perf',
 
     ]],
     // <type> 不能为空
