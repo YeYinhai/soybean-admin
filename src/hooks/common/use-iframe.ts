@@ -18,11 +18,16 @@ export default function useIframe(props: Props) {
 
   /** 隐藏iframe示例 */
   watch(isShow, (newValue, oldValue) => {
-    if (_this !== null && _this?.parent !== null && _this?.parent?.type.name !== 'KeepAlive') {
+    if (
+      _this !== null &&
+      _this?.parent !== null &&
+      _this?.parent.parent !== null &&
+      _this?.parent?.type.name !== 'KeepAlive'
+    ) {
       if (newValue === false) {
-        _this.parent.proxy!.$el.style.display = 'none';
+        _this.parent.parent.proxy!.$el.style.display = 'none';
       } else if (newValue === true) {
-        _this.parent.proxy!.$el.style.display = '';
+        _this.parent.parent.proxy!.$el.style.display = '';
       }
     }
   });
