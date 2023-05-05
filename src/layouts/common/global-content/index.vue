@@ -9,16 +9,7 @@
     >
       <keep-alive :include="routeStore.cacheRoutes">
         <component
-          :is="
-            () => {
-              debugger;
-              if (Component.meta != undefined && Component.meta?.iframeKeepAlive === true) {
-                return null;
-              } else {
-                return Component;
-              }
-            }
-          "
+          :is="Component"
           v-if="app.reloadFlag"
           :key="route.fullPath"
           :class="{ 'p-16px': showPadding }"
@@ -29,21 +20,34 @@
   </router-view>
 
   <!--iframe页-->
-  <component
-    :is="item.components.default"
-    v-for="item in hasOpenComponentsArr"
-    v-show="route1.path === item.path"
-    :key="item.name"
-    class="abc"
-  ></component>
+  <transition
+    :name="theme.pageAnimateMode"
+    mode="out-in"
+    :appear="true"
+    @before-leave="app.setDisableMainXScroll(true)"
+    @after-enter="app.setDisableMainXScroll(false)"
+  >
+    <div class="h-full">
+      <component
+        :is="item.default"
+        v-for="item in iframeComponentsArr"
+        :key="item.name + '_div2'"
+        :route-name="item.name"
+        :class="{ 'p-16px': showPadding }"
+        class="flex-grow bg-#f6f9f8 dark:bg-#101014 transition duration-100 ease-in-out h-full"
+      />
+    </div>
+  </transition>
+  <!-- <p>Current path: {{ route1.path }}</p>
+  <p>Query params: {{ route1.query }}</p>
+  <p>Route params: {{ route1.params }}</p> -->
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { routes } from '@/router';
+import { computed, defineAsyncComponent } from 'vue';
+import { useRouter } from 'vue-router';
+import { views } from '@/views';
 import { useAppStore, useRouteStore, useThemeStore } from '@/store';
-
 defineOptions({ name: 'GlobalContent' });
 
 interface Props {
@@ -58,27 +62,23 @@ withDefaults(defineProps<Props>(), {
 const app = useAppStore();
 const theme = useThemeStore();
 const routeStore = useRouteStore();
-const route1 = useRoute();
 const router = useRouter();
+
 // 获取缓存iframe组件实例。
-const hasOpenComponentsArr = computed(() => {
+const iframeComponentsArr = computed(() => {
   const arr: any = [];
 
   routeStore.cacheRoutes.forEach(function (value) {
-    const obj = router.getRoutes().find(item => {
+    const component = router.getRoutes().find(item => {
       return value === item.name && item.meta.iframeKeepAlive === true;
     });
-    if (obj !== undefined) {
-      routes.forEach(item => {
-        if (item.name === obj.name) {
-          obj.meta = item.meta;
-        }
-      });
-
-      arr.push(obj);
+    if (component !== undefined) {
+      const name = component.name;
+      // @ts-ignore name 可能为空，但是实际上上面已经判断过了。
+      arr.push({ default: defineAsyncComponent(views[name]), name });
     }
   });
-  // debugger;
+
   return arr;
 });
 </script>

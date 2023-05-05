@@ -134,9 +134,19 @@ module.exports = {
       {
         args: 'none',
         vars: 'all',
-        ignoreRestSiblings: true
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_'
       }
     ],
-    'func-names': 'off'
+    'func-names': 'off',
+    'no-underscore-dangle': 'off',
+    'no-debugger': 'off',
+    'no-restricted-syntax': 'off',
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {
+        'ts-ignore': 'allow-with-description'
+      }
+    ]
   }
 };

@@ -5,7 +5,7 @@ const document: AuthRoute.Route = {
   children: [
     {
       name: 'dataease_dataset',
-      path: '/document/dataset',
+      path: '/dataease/dataset',
       component: 'self',
       meta: {
         title: 'dataset',
