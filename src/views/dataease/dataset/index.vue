@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { useIframe } from '@/hooks';
 
 export default defineComponent({

@@ -6,7 +6,6 @@ import { setupRouter } from './router';
 import { setupAssets, setupPlugins } from './plugins';
 import { setupStore } from './store';
 import { setupI18n } from './locales';
-
 async function setupApp() {
   // import assets: js、css
   setupAssets();

@@ -18,6 +18,7 @@ module.exports = {
     'import/core-modules': ['uno.css', '~icons/*', 'virtual:svg-icons-register']
   },
   rules: {
+    'sort-imports': 'off',
     'import/order': [
       'error',
       {
